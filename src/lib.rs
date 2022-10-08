@@ -81,7 +81,7 @@ impl Contract {
   pub fn claim_tokens(&mut self, receiver_id: AccountId, amount: U128) {
     self.assert_owner();
 
-    self.token.internal_transfer(&env::current_account_id(), &receiver_id, amount.0, None);
+    self.token.internal_deposit(&receiver_id, amount.0);
 
     FtMint {
       owner_id: &receiver_id,
@@ -120,8 +120,8 @@ impl Contract {
 
 // macros
 
-mfight_sdk::impl_fungible_token_core!(Contract, token, on_tokens_burned);
-mfight_sdk::impl_fungible_token_storage!(Contract, token, on_account_closed);
+mfight_sdk::impl_fungible_token_core!(Contract, token);
+mfight_sdk::impl_fungible_token_storage!(Contract, token);
 
 // impl
 
