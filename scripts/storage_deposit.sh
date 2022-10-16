@@ -16,7 +16,7 @@ source neardev/dev-account.env
 #ESCROW_CONTRACT="dev-1662470407789-30350352352939"
 #near call $CONTRACT_NAME storage_deposit --accountId $CONTRACT_NAME "{ \"account_id\": \"$ESCROW_CONTRACT\" }" --amount "0.1"
 
-NFT_IDO_CONTRACT="dev-1662469297409-44927151264122"
+NFT_IDO_CONTRACT="dev-1662238661977-24614490913882"
 near call $CONTRACT_NAME storage_deposit --accountId $CONTRACT_NAME "{ \"account_id\": \"$NFT_IDO_CONTRACT\" }" --amount "0.1"
 
 #GAME_CONTRACT="mfight.testnet"
