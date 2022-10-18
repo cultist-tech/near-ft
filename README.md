@@ -1,5 +1,62 @@
-Minimal NEP141 + Metadata Token Launcher
+Fungible-Token
+===================
 
-TBD
+This repository includes an implementation of a fungible-token contract.
 
-Fork of: https://github.com/mikedotexe/nep-141-examples (basic)
+Introduction
+=============
+
+The ability to trade NFT to FT, NFT to NFT, FT to FT outside of a specialized site with a specific user. This will give you the ability to do things with NFT/FT even if they are not on the site (not cast), or if you don't want the NFT/FT to fall into other hands.
+
+Prerequisites
+=============
+
+  * Make sure Rust is installed per the prerequisites in [`near-sdk-rs`](https://github.com/near/near-sdk-rs).
+  * Make sure [near-cli](https://github.com/near/near-cli) is installed.
+
+Explore this contract
+=====================
+
+The source for this contract is in `/src/lib.rs`.
+
+Building this contract
+======================
+Run the following, and we'll build our rust project up via cargo. This will generate our WASM binaries into our `res/` directory. This is the smart contract we'll be deploying onto the NEAR blockchain later.
+```bash
+sh ./scripts/build.sh
+```
+
+Using this contract
+===================
+
+### Quickest deploy
+
+You can build and deploy this smart contract to a development account. [Dev Accounts](https://docs.near.org/docs/concepts/account#dev-accounts) are auto-generated accounts to assist in developing and testing smart contracts. Please see the [Standard deploy](#standard-deploy) section for creating a more personalized account to deploy to.
+
+```bash
+sh ./scripts/dev-deploy.sh
+```
+
+Behind the scenes, this is creating an account and deploying a contract to it. On the console, notice a message like:
+
+>Done deploying to dev-1234567890123
+
+In this instance, the account is `dev-1234567890123`. A file has been created containing a key pair to
+the account, located at `neardev/dev-account`. To make the next few steps easier, we're going to set an
+environment variable containing this development account id and use that when copy/pasting commands.
+Run this command to set the environment variable:
+
+```bash
+source ./scripts/neardev/dev-account.env
+```
+
+You can tell if the environment variable is set correctly if your command line prints the account name after this command:
+```bash
+echo $CONTRACT_NAME
+```
+
+The next command will initialize the contract using the `new` method:
+
+```bash
+near call $CONTRACT_NAME new_default_meta '{"owner_id": "'$CONTRACT_NAME'"}' --accountId $CONTRACT_NAME
+```
