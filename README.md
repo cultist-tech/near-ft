@@ -3,11 +3,6 @@ Fungible-Token
 
 This repository includes an implementation of a fungible-token contract.
 
-Introduction
-=============
-
-The ability to trade NFT to FT, NFT to NFT, FT to FT outside of a specialized site with a specific user. This will give you the ability to do things with NFT/FT even if they are not on the site (not cast), or if you don't want the NFT/FT to fall into other hands.
-
 Prerequisites
 =============
 
